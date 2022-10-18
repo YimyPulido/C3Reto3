@@ -1,10 +1,12 @@
 package com.example.retos345.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.retos345.entities.ReportClient;
 import com.example.retos345.entities.Reservation;
 import com.example.retos345.repositories.ReservationRepository;
 
@@ -20,6 +22,17 @@ public class ReservationService {
         }
 
         // METODOS CRUD
+        public list<ReportClient>getReservationsReportClients(){
+            List<ReportClient> listReportClients = new ArrayList();
+            List<Client> listClients = this.clientRepository.findAll();
+            for(int i=0; i<listClients.size(); i++){
+                ReportClient reportClient = new ReportClient(listClients.get(i));
+                listReportClients.add(reportClient);
+            }
+            return listReportClients;
+
+        }
+
         public List<Reservation> getListReservations(){
             return this.reservationRepository.findAll();
         }

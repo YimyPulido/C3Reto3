@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.retos345.entities.ReportClient;
 import com.example.retos345.entities.Reservation;
 import com.example.retos345.services.ReservationService;
 
@@ -60,5 +61,9 @@ public class ReservationController {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
+    @GetMapping("/report-clients")
+    public ResponseEntity<List<ReportClient>> getReservationsReportClients(){
+        return new ResponseEntity<List<ReportClient>>(this.reservationService.getReservationsReportClients(), HttpStatus.OK);
+    }
 
 }
